@@ -41,14 +41,16 @@ public class Main {
     }
 
     public static int calculateHighScorePosition(int playerScore) {
+        int highScorePosition = 4;
+
         if (playerScore >= 1000) {
-            return 1;
+            highScorePosition = 1;
         } else if (playerScore >= 500) {
-            return 2;
+            highScorePosition = 2;
         } else if (playerScore >= 100) {
-            return 3;
-        } else {
-            return 4;
+            highScorePosition = 3;
         }
+
+        return highScorePosition;
     }
 }
