@@ -18,6 +18,18 @@ public class Main {
                 if (countOfPrimeNumbers == 10) break;
             }
         }
+
+        for (int i = 1, count = 0, sum = 0; i <= 100; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                count++;
+                sum += i;
+            }
+
+            if (count == 5) {
+                System.out.println("Sum is " + sum);
+                break;
+            }
+        }
     }
 
     public static boolean isPrime(int n) {
