@@ -19,7 +19,7 @@ public class MobilePhone {
     }
 
     public void addContact(String name, String number) {
-        if (exist(name)) {
+        if (searchName(name) >= 0) {
             System.out.println("Contact with such name already exists");
         } else {
             contacts.add(new Contact(name, number));
@@ -40,7 +40,7 @@ public class MobilePhone {
         int index = searchName(currentName);
         if (index < 0) {
             System.out.println("There is no such contact");
-        } else if (exist(newName)) {
+        } else if (searchName(newName) >= 0) {
             System.out.println("Contact with such name already exists");
         } else {
             contacts.get(index).setContactName(newName);
@@ -77,9 +77,5 @@ public class MobilePhone {
         }
 
         if (count == 0) System.out.println("No results");
-    }
-
-    public boolean exist(String name) {
-        return searchName(name) >= 0;
     }
 }
