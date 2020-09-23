@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static Scanner scanner = new Scanner(System.in);
-    public static MobilePhone mobilePhone = new MobilePhone();
+    private static Scanner scanner = new Scanner(System.in);
+    private static MobilePhone mobilePhone = new MobilePhone();
 
     public static void main(String[] args) {
         boolean showMenu = true;
@@ -16,7 +16,7 @@ public class Main {
                     showMenu = false;
                     break;
                 case "1":
-                    printContacts();
+                    mobilePhone.printContacts();
                     break;
                 case "2":
                     addContact();
@@ -35,13 +35,14 @@ public class Main {
     }
 
     public static void printOptions() {
-        System.out.print("\nPress\n\t0 - To quit the application\n\t1 - To print the list of contacts\n" +
-                "\t2 - To add a new contact\n\t3 - To update existing contact\n\t4 - To remove contact\n" +
-                "\t5 - To search for a contact\nEnter you choice: ");
-    }
-
-    public static void printContacts() {
-        mobilePhone.printContacts();
+        System.out.print("\nPress\n" +
+                "\t0 - To quit the application\n" +
+                "\t1 - To print the list of contacts\n" +
+                "\t2 - To add a new contact\n" +
+                "\t3 - To update existing contact\n" +
+                "\t4 - To remove contact\n" +
+                "\t5 - To search for a contact\n" +
+                "Enter you choice: ");
     }
 
     public static void addContact() {
