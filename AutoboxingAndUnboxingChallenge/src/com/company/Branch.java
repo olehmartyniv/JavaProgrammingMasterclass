@@ -9,17 +9,28 @@ public class Branch {
 
     public Branch(String branchName) {
         this.branchName = branchName;
+        System.out.println(branchName + " branch is created");
     }
 
     public String getBranchName() {
         return branchName;
     }
 
-    public Customer getCustomer(String customerName) {
-        return customers.get(getIndexIfExist(customerName));
+    public ArrayList<Customer> getCustomers() {
+        return customers;
     }
 
-    public void showBranchCustomers() {
+    public Customer getCustomer(String customerName) {
+        int index = getIndexIfExist(customerName);
+        return (index < 0) ? null : customers.get(index);
+    }
+
+    public void printBranchCustomers() {
+        if (customers.isEmpty()) {
+            System.out.println("There are no any customers");
+            return;
+        }
+
         System.out.println("Customers in " + branchName + " branch:");
         for (int i = 0; i < customers.size(); i++) {
             System.out.println("Customer #" + (i + 1) + ": " + customers.get(i).getCustomerName());
@@ -31,15 +42,6 @@ public class Branch {
             System.out.println("Customer already exist in this branch");
         } else {
             customers.add(new Customer(customerName, initialTransaction));
-        }
-    }
-
-    public void addTransaction(String customerName, double transaction) {
-        int index = getIndexIfExist(customerName);
-        if (index < 0) {
-            System.out.println("There is no such customer in this branch");
-        } else {
-            customers.get(index).createNewTransaction(transaction);
         }
     }
 

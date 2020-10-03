@@ -4,11 +4,15 @@ import java.util.ArrayList;
 
 public class Bank {
 
-    private String bankName;
     private ArrayList<Branch> branches = new ArrayList<>();
 
+    public ArrayList<Branch> getBranches() {
+        return branches;
+    }
+
     public Branch getBranch(String branchName) {
-        return branches.get(getIndexIfExist(branchName));
+        int index = getIndexIfExist(branchName);
+        return (index < 0) ? null : branches.get(index);
     }
 
     public void createNewBranch(String branchName) {
