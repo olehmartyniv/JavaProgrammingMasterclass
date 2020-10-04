@@ -9,8 +9,7 @@ public class Customer {
 
     public Customer(String customerName, double initialTransaction) {
         this.customerName = customerName;
-        transactions.add(initialTransaction);
-        System.out.println(customerName + " is created");
+        createNewTransaction(initialTransaction);
     }
 
     public String getCustomerName() {
