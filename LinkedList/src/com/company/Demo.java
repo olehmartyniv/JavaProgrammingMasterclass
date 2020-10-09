@@ -9,13 +9,14 @@ public class Demo {
 
     public static void main(String[] args) {
         LinkedList<String> placesToVisit = new LinkedList<>();
-        placesToVisit.add("Sydney");
-        placesToVisit.add("Melbourne");
-        placesToVisit.add("Brisbane");
-        placesToVisit.add("Perth");
-        placesToVisit.add("Canberra");
-        placesToVisit.add("Adelaide");
-        placesToVisit.add("Darwin");
+        addInOrder(placesToVisit, "Sydney");
+        addInOrder(placesToVisit, "Melbourne");
+        addInOrder(placesToVisit, "Brisbane");
+        addInOrder(placesToVisit, "Perth");
+        addInOrder(placesToVisit, "Canberra");
+        addInOrder(placesToVisit, "Adelaide");
+        addInOrder(placesToVisit, "Darwin");
+        printList(placesToVisit);
 
         addInOrder(placesToVisit, "Alice Springs");
         addInOrder(placesToVisit, "Darwin");
@@ -24,7 +25,7 @@ public class Demo {
     }
 
     private static void printList(LinkedList<String> linkedList) {
-        Iterator<String> i= linkedList.iterator();
+        Iterator<String> i = linkedList.iterator();
         while (i.hasNext()) {
             System.out.println("Now visiting " + i.next());
         }
@@ -45,8 +46,6 @@ public class Demo {
                 stringListIterator.previous();
                 stringListIterator.add(newCity);
                 return true;
-            } else if (comparison < 0) {
-                // move on next city
             }
         }
 
@@ -76,7 +75,6 @@ public class Demo {
                     System.out.println("Holiday (Vacation) over");
                     quit = true;
                     break;
-
                 case 1:
                     if (!goingForward) {
                         if(listIterator.hasNext()) {
@@ -91,7 +89,6 @@ public class Demo {
                         goingForward = false;
                     }
                     break;
-
                 case 2:
                     if (goingForward) {
                         if (listIterator.hasPrevious()) {
@@ -106,13 +103,10 @@ public class Demo {
                         goingForward = true;
                     }
                     break;
-
                 case 3:
                     printMenu();
                     break;
-
             }
-
         }
     }
 
