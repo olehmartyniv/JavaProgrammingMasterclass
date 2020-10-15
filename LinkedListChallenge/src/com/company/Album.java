@@ -12,15 +12,23 @@ public class Album {
         songs = new ArrayList<>();
     }
 
+    public String getAlbumTitle() {
+        return albumTitle;
+    }
+
+    public ArrayList<Song> getSongs() {
+        return songs;
+    }
+
     public void printAlbumSongs() {
         if (songs.isEmpty()) {
             System.out.println("Album is empty");
         } else {
-            System.out.printf("%-3s %-15s %-10s%n", "#", "Title", "Duration");
+            System.out.printf("%-3s %-25s %-10s%n", "#", "Title", "Duration");
             for (int i = 0; i < songs.size(); i++) {
                 String duration = songs.get(i).getSongDuration() / 60 + ":" +
                         String.format("%02d", songs.get(i).getSongDuration() % 60);
-                System.out.printf("%-3d %-15s %-10s%n", (i + 1), songs.get(i).getSongTitle(), duration);
+                System.out.printf("%-3d %-25s %-10s%n", (i + 1), songs.get(i).getSongTitle(), duration);
             }
         }
     }
@@ -34,13 +42,8 @@ public class Album {
         }
     }
 
-    public Song getSong(String name) {
-        int index = lookupSong(name);
-        if (index < 0) {
-            return null;
-        } else {
+    public Song getSong(int index) {
             return songs.get(index);
-        }
     }
 
     private int lookupSong(String name) {
