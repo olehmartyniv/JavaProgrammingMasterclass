@@ -17,4 +17,8 @@ public class Song {
     public int getSongDuration() {
         return songDuration;
     }
+
+    public boolean equals(Song song) {
+        return (songTitle.equals(song.getSongTitle()) && songDuration == song.getSongDuration());
+    }
 }

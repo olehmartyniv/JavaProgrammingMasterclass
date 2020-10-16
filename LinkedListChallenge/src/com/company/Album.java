@@ -24,6 +24,7 @@ public class Album {
         if (songs.isEmpty()) {
             System.out.println("Album is empty");
         } else {
+            System.out.println("\n\t" + albumTitle);
             System.out.printf("%-3s %-25s %-10s%n", "#", "Title", "Duration");
             for (int i = 0; i < songs.size(); i++) {
                 String duration = songs.get(i).getSongDuration() / 60 + ":" +
@@ -34,11 +35,11 @@ public class Album {
     }
 
     public void addSong(Song song) {
-        if (lookupSong(song.getSongTitle()) < 0) {
+        if (lookupSong(song)) {
+            System.out.println(song.getSongTitle() + " already in the album");
+        } else {
             songs.add(song);
             System.out.println(song.getSongTitle() + " added to '" + albumTitle + "' album");
-        } else {
-            System.out.println(song.getSongTitle() + " already in the album");
         }
     }
 
@@ -46,12 +47,11 @@ public class Album {
             return songs.get(index);
     }
 
-    private int lookupSong(String name) {
-        int index = -1;
+    private boolean lookupSong(Song song) {
         for (int i = 0; i < songs.size(); i++) {
-            if (songs.get(i).getSongTitle().equals(name)) index = i;
+            if (songs.get(i).equals(song)) return true;
         }
 
-        return index;
+        return false;
     }
 }
