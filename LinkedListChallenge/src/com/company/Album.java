@@ -43,10 +43,6 @@ public class Album {
         }
     }
 
-    public Song getSong(int index) {
-            return songs.get(index);
-    }
-
     private boolean lookupSong(Song song) {
         for (int i = 0; i < songs.size(); i++) {
             if (songs.get(i).equals(song)) return true;

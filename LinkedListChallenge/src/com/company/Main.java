@@ -23,11 +23,14 @@ public class Main {
         albums.get(2).addSong(new Song("Smells Like Teen Spirit", 301));
         albums.get(2).addSong(new Song("Lithium", 257));
         albums.get(2).addSong(new Song("Lounge Act", 156));
-        playlist.addSong(new Song("first", 210));
-        playlist.addSong(new Song("second", 250));
-        playlist.addSong(new Song("third", 230));
-        playlist.addSong(new Song("fourth", 220));
-        playlist.addSong(new Song("fifth", 240));
+//        playlist.addSong(new Song("first", 210));
+//        playlist.addSong(new Song("second", 250));
+//        playlist.addSong(new Song("third", 230));
+//        playlist.addSong(new Song("fourth", 220));
+//        playlist.addSong(new Song("fifth", 240));
+//        playlist.removeSong(new Song("fifth", 240));
+//        playlist.addSong(albums.get(2).getSongs().get(2));
+//        System.out.println(albums.get(2).getSongs().get(2) + " == " + playlist.getPlaylist().get(5));
     }
 
     public static void main(String[] args) {
@@ -66,23 +69,30 @@ public class Main {
             ListIterator<Song> listIterator = playlist.getPlaylist().listIterator();
             Song currentSong = listIterator.next();
             while (true) {
+                System.out.println("\n'" + currentSong.getSongTitle() + "' is playing");
                 System.out.print("\nPress\n" +
                         "1 - next song\n" +
                         "2 - previous song\n" +
                         "3 - replay song\n" +
                         "4 - remove song\n" +
                         "0 - quit\n");
-                System.out.println("'" + currentSong.getSongTitle() + "' is playing");
                 switch (scanner.nextLine()) {
                     case "0":
                         System.out.println("Stop playing");
                         return;
                     case "1":
-                        currentSong = listIterator.next();
-
+                        if (listIterator.hasNext()) {
+                            currentSong = listIterator.next();
+                        } else {
+                            System.out.println("Reached the end of the playlist");
+                        }
                         break;
                     case "2":
-                        currentSong = listIterator.previous();
+                        if (listIterator.hasPrevious()) {
+                            currentSong = listIterator.previous();
+                        } else {
+                            System.out.println("We are at the start of the playlist");
+                        }
                         break;
                     case "3":
                         listIterator.previous();
@@ -115,7 +125,6 @@ public class Main {
                 break;
             } else if (selectedAlbum > albums.size() || selectedAlbum < 0) {
                 System.out.println("Incorrect value");
-                continue;
             } else {
                 Album album = albums.get(selectedAlbum - 1);
                 while (true) {
@@ -127,10 +136,8 @@ public class Main {
                         break;
                     } else if (selectedSong > album.getSongs().size() || selectedSong < 0) {
                         System.out.println("Incorrect value");
-                        continue;
                     } else {
-                        Song song = album.getSong(selectedSong - 1);
-                        playlist.addSong(song);
+                        playlist.addSong(album.getSongs().get((selectedSong - 1)));
                     }
                 }
             }
