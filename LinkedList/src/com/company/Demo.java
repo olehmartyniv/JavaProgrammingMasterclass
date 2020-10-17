@@ -77,7 +77,7 @@ public class Demo {
                     break;
                 case 1:
                     if (!goingForward) {
-                        if(listIterator.hasNext()) {
+                        if (listIterator.hasNext()) {
                             listIterator.next();
                         }
                         goingForward = true;
