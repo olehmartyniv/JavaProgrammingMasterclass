@@ -43,18 +43,9 @@ public class Playlist {
         }
     }
 
-    public void removeSong(Song song) {
-        if (lookupSong(song)) {
-            playlist.remove(song);
-            System.out.println(song.getSongTitle() + " removed from the playlist");
-        } else {
-            System.out.println("Can't find '" + song.getSongTitle() + "' in the playlist");
-        }
-    }
-
     private boolean lookupSong(Song song) {
-        for (int i = 0; i < playlist.size(); i++) {
-            if (playlist.get(i).equals(song)) return true;
+        for (Song value : playlist) {
+            if (value.equals(song)) return true;
         }
 
         return false;

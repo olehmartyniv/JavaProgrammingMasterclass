@@ -44,8 +44,8 @@ public class Album {
     }
 
     private boolean lookupSong(Song song) {
-        for (int i = 0; i < songs.size(); i++) {
-            if (songs.get(i).equals(song)) return true;
+        for (Song value : songs) {
+            if (value.equals(song)) return true;
         }
 
         return false;
