@@ -14,11 +14,9 @@ public class Song {
         return songTitle;
     }
 
-    public int getSongDuration() {
-        return songDuration;
-    }
-
-    public boolean equals(Song song) {
-        return (songTitle.equals(song.getSongTitle()) && songDuration == song.getSongDuration());
+    @Override
+    public String toString() {
+        return String.format("%-25s %-10s%n", songTitle, songDuration / 60 + ":" +
+                String.format("%02d", songDuration % 60));
     }
 }

@@ -1,6 +1,8 @@
 package com.company;
 
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class Playlist {
 
@@ -16,22 +18,12 @@ public class Playlist {
         return playlistName;
     }
 
-    public LinkedList<Song> getPlaylist() {
-        return playlist;
+    public int getPlaylistSize() {
+        return playlist.size();
     }
 
-    public void printPlaylistSongs() {
-        if (playlist.isEmpty()) {
-            System.out.println("Playlist is empty");
-        } else {
-            System.out.println("\n" + playlistName + " songs:");
-            System.out.printf("%-3s %-25s %-10s%n", "#", "Title", "Duration");
-            for (int i = 0; i < playlist.size(); i++) {
-                String duration = playlist.get(i).getSongDuration() / 60 + ":" +
-                        String.format("%02d", playlist.get(i).getSongDuration() % 60);
-                System.out.printf("%-3d %-25s %-10s%n", (i + 1), playlist.get(i).getSongTitle(), duration);
-            }
-        }
+    public ListIterator<Song> getPlaylistIterator() {
+        return playlist.listIterator();
     }
 
     public void addSong(Song song) {
@@ -49,5 +41,18 @@ public class Playlist {
         }
 
         return false;
+    }
+
+    public void printPlaylistSongs() {
+        if (playlist.isEmpty()) {
+            System.out.println("Playlist is empty");
+        } else {
+            Iterator<Song> iterator = playlist.iterator();
+            System.out.println("\n" + playlistName + " songs:");
+            System.out.printf("%-3s %-25s %-10s%n", "#", "Title", "Duration");
+            for (int i = 0; iterator.hasNext(); i++) {
+                System.out.printf("%-3d %s", (i + 1), iterator.next());
+            }
+        }
     }
 }
