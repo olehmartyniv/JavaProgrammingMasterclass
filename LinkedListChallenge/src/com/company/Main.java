@@ -23,11 +23,6 @@ public class Main {
         albums.get(2).addSong(new Song("Smells Like Teen Spirit", 301));
         albums.get(2).addSong(new Song("Lithium", 257));
         albums.get(2).addSong(new Song("Lounge Act", 156));
-//        playlist.addSong(new Song("Smells Like Teen Spirit", 301));
-//        playlist.addSong(new Song("Chop Suey!", 210));
-//        playlist.addSong(new Song("Duality", 252));
-//        playlist.addSong(new Song("Toxicity", 220));
-//        playlist.addSong(new Song("Vermilion", 316));
     }
 
     public static void main(String[] args) {
